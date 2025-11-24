@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import AdminEmployeeViewSet, MyProfileViewSet
+from .views import AdminEmployeeViewSet, MyProfileViewSet, PunchInView, PunchOutView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = DefaultRouter()
@@ -24,4 +24,8 @@ urlpatterns = [
 
     # Self-profile endpoints
     path('api/employee/profile/', my_profile, name='my_profile'),
+    
+    # Attendence
+    path("api/attendance/punch-in/", PunchInView.as_view(), name="punch-in"),
+    path("api/attendance/punch-out/", PunchOutView.as_view(), name="punch-out"),
 ]

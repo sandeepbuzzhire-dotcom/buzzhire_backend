@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, EmployeeProfile
+from .models import User, EmployeeProfile, Attendance
 from django.contrib.auth import get_user_model
 
 UserModel = get_user_model()
@@ -38,3 +38,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = UserModel
         fields = ['id', 'email', 'role', 'profile']
         read_only_fields = ['role', 'email']
+
+
+
+class AttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Attendance
+        fields = "__all__"
